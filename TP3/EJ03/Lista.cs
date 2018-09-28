@@ -8,14 +8,12 @@ namespace EJ03
 {
     abstract class Lista: List<Paciente>
     {
-        public List<Paciente> iPacientes;
-
         public abstract void AgregarPaciente(Paciente pPaciente);
 
-        public abstract void QuitarPaciente(Paciente pPaciente);
+        public abstract void QuitarPaciente();
 
         public abstract void OrdenarLista();
 
-        public abstract void ObtenerSiguientePaciente();
+        public abstract Paciente ObtenerSiguientePaciente();
     }
 }

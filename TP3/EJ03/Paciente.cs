@@ -12,9 +12,9 @@ namespace EJ03
         private string iNombre;
         private DateTime iHoraLlegada;
 
-        public Paciente()
+        public Paciente(string pNombre)
         {
-
+            iNombre = pNombre;
         }
 
         public int NivelDeUrgencia

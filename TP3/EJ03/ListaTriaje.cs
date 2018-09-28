@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace EJ03
 {
-    class ListaFIFO: Lista
+    class ListaTriaje : Lista
     {
+       /* private Lista iPacientes;
+
+        public Lista Lista
+        {
+            get { return iPacientes; }
+            set { iPacientes = value; }
+        }
+        */
         public override void AgregarPaciente(Paciente pPaciente)
         {
             this.Add(pPaciente);
@@ -20,7 +28,7 @@ namespace EJ03
 
         public override void OrdenarLista()
         {
-            this.OrderBy(p => p.HoraLlegada).ToList();
+           this.OrderBy(p => p.NivelDeUrgencia).ThenBy(p => p.HoraLlegada).ToList();
         }
 
         public override Paciente ObtenerSiguientePaciente()

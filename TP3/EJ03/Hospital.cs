@@ -8,19 +8,37 @@ namespace EJ03
 {
     class Hospital
     {
+        private Lista iLista = new ListaFIFO();
 
-        public void AgregarPaciente(Paciente pPaciente)
+        public Lista Lista
         {
-
+            get { return iLista; }
+            set { iLista = value; }
         }
 
-        public void QuitarPaciente()
+        public void AgregarPaciente(string pNombre , int pNiveldeUrgencia)
         {
-            /*for (int i = 0; i < iPacientes.Length; i++)
-            {
-                iPacientes[i] = iPacientes[i + 1];
-            }
-            iPacientes[iPacientes.Length-1] = null;*/
+            Paciente paciente = new Paciente(pNombre);
+            paciente.HoraLlegada = DateTime.Now;
+            paciente.NivelDeUrgencia = pNiveldeUrgencia;
+            iLista.AgregarPaciente(paciente);
+            iLista.OrdenarLista();
+        }
+
+        public void CambiarATriaje()
+        {
+            Lista nuevaLista = new ListaTriaje();
+            nuevaLista = iLista;
+            nuevaLista.OrdenarLista();
+            Lista = nuevaLista;
+        }
+
+        public void CambiarAFIFO()
+        {
+            Lista nuevaLista = new ListaFIFO();
+            nuevaLista = iLista;
+            nuevaLista.OrdenarLista();
+            Lista = nuevaLista;
         }
     }
 }
