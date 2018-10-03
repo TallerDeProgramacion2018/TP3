@@ -8,33 +8,26 @@ namespace EJ03
 {
     class ListaTriaje : Lista
     {
-       /* private Lista iPacientes;
-
-        public Lista Lista
-        {
-            get { return iPacientes; }
-            set { iPacientes = value; }
-        }
-        */
         public override void AgregarPaciente(Paciente pPaciente)
         {
-            this.Add(pPaciente);
+            this.iListaPacientes.Add(pPaciente);
         }
 
         public override void QuitarPaciente()
         {
-            this.Remove(this.First());
+            this.iListaPacientes.Remove(this.iListaPacientes.First());
         }
 
         public override void OrdenarLista()
         {
-           this.OrderBy(p => p.NivelDeUrgencia).ThenBy(p => p.HoraLlegada).ToList();
+           var lista = this.iListaPacientes.OrderBy(p => p.NivelDeUrgencia).ThenBy(p => p.HoraLlegada).ToList();
+           this.iListaPacientes = lista;
         }
 
         public override Paciente ObtenerSiguientePaciente()
         {
-            Paciente paciente = this.First();
-            this.Remove(paciente);
+            Paciente paciente = this.iListaPacientes.First();
+            this.iListaPacientes.Remove(paciente);
             return paciente;
         }
     }

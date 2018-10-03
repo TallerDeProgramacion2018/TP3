@@ -10,33 +10,44 @@ namespace EJ03
     {
         Hospital hospital = new Hospital();
 
+        public string Orden()
+        {
+            if (hospital.Pacientes is ListaFIFO)
+                return "Orden de llegada";
+            else
+                return "Triaje";
+        }
         public AuxiliarPaciente[] ArregloPacientes()
         {
-            AuxiliarPaciente[] arreglo = new AuxiliarPaciente[hospital.Lista.Count];
-            Lista lista = hospital.Lista;
-            AuxiliarPaciente auxiliar = new AuxiliarPaciente();
-
-            for (int i = 0; i < arreglo.Length; i++)
+            AuxiliarPaciente[] arreglo = new AuxiliarPaciente[hospital.Pacientes.ListaPacientes.Count];
+            Lista lista = hospital.Pacientes;
+            int i = 0;
+            foreach (Paciente p in lista.ListaPacientes)
             {
-                Paciente primero = lista.First();
-                lista.Remove(primero);
-                auxiliar.Nombre = primero.Nombre;
-                auxiliar.NumeroDeUrgencia = primero.NivelDeUrgencia;
-                arreglo[i] = auxiliar;
+                arreglo[i].Nombre = p.Nombre;
+                arreglo[i].NumeroDeUrgencia = p.NivelDeUrgencia;
+                i += 1;
             }
-
+            
             return arreglo;
         }
 
-        public bool AtenderPaciente()
+        public ResultadoAtencion AtenderPaciente()
         {
-            if (hospital.Lista.Count != 0)
+            if (hospital.Pacientes.ListaPacientes.Count != 0)
             {
-                hospital.Lista.QuitarPaciente();
-                return true;
+                ResultadoAtencion rA = new ResultadoAtencion();
+                rA.Resultado = true;
+                rA.Nombre = hospital.Pacientes.ListaPacientes.First().Nombre;
+                hospital.Pacientes.QuitarPaciente();
+                return rA;
             }
             else
-                return false;
+            {
+                ResultadoAtencion rA = new ResultadoAtencion();
+                rA.Resultado = false;
+                return rA;
+            }
         }
 
         public void AgregarPaciente(string pNombre, int pNiveldeUrgencia)
@@ -46,7 +57,7 @@ namespace EJ03
 
         public Lista ListaPacientes()
         {
-            return hospital.Lista;
+            return hospital.Pacientes;
         }
 
         public void CambiarATriaje()

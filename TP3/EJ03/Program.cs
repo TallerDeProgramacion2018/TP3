@@ -14,7 +14,7 @@ namespace EJ03
         {
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("    Hospital");
+            Console.WriteLine($"    Hospital                                         {Controlador.Orden()}");
             Console.WriteLine();
             Console.WriteLine("1- Atender Paciente");
             Console.WriteLine("2- Agregar Paciente");
@@ -28,11 +28,16 @@ namespace EJ03
                 case ConsoleKey.D1:
                     {
                         Console.Clear();
-                        if (Controlador.AtenderPaciente())
+                        ResultadoAtencion Atencion = Controlador.AtenderPaciente();
+                        if (Atencion.Resultado)
                         {
-                            Console.WriteLine("Paciente atendido con éxito.");
+                            Console.WriteLine($"El Paciente {Atencion.Nombre} fue atendido con éxito.");
+                            Console.WriteLine();
                             Console.Write("Presione cualquier tecla para continuar...");
                         }
+                        else
+                            Console.WriteLine("No hay pacientes para atender.");
+
                         Console.ReadKey();
                         VentanaPrincipal();
                         break;
@@ -50,6 +55,7 @@ namespace EJ03
                         int nivelConvertido = Convert.ToInt16(nivel);
 
                         Controlador.AgregarPaciente(nombre, nivelConvertido);
+                        VentanaPrincipal();
                         break;
                     }
 
@@ -63,22 +69,45 @@ namespace EJ03
                         {
                             Console.WriteLine($"{arreglo[i].Nombre}        {arreglo[i].NumeroDeUrgencia}");
                         }
-
+                        Console.ReadKey();
+                        VentanaPrincipal();
                         break;
                     }
 
                 case ConsoleKey.D4:
                     {
                         Console.Clear();
-                        Console.Write("Ingrese Nombre del Paciente: ");
-                        string nombre = Console.ReadLine();
+                        Console.Write("Ingrese Ordenamiento deseado:");
                         Console.WriteLine();
+                        Console.WriteLine("1- Orden de llegada");
+                        Console.WriteLine("2- Orden de Triaje");
 
-                        Console.WriteLine("Ingrese Nivel de Urgencia del Paciente: ");
-                        string nivel = Console.ReadLine();
-                        int nivelConvertido = Convert.ToInt16(nivel);
+                        var entrada2 = Console.ReadKey();
+                        switch (entrada2.Key)
+                        {
 
-                        Controlador.AgregarPaciente(nombre, nivelConvertido);
+                            case ConsoleKey.D1:
+                                {
+                                    Controlador.CambiarAFIFO();
+                                    Console.WriteLine("El ordenamiento se cambió por orden de llegada.");
+                                    Console.WriteLine();
+                                    Console.WriteLine("Presione cualquier tecla para continuar...");
+                                    Console.ReadKey();
+                                    break;
+                                }
+
+                            case ConsoleKey.D2:
+                                {
+                                    Controlador.CambiarATriaje();
+                                    Console.WriteLine("El ordenamiento se cambió por orden Triaje.");
+                                    Console.WriteLine();
+                                    Console.WriteLine("Presione cualquier tecla para continuar...");
+                                    Console.ReadKey();
+                                    break;
+                                }
+                        }
+                        VentanaPrincipal();
+
                         break;
                     }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EJ03
 {
-    struct AuxiliarPaciente
+    struct AuxiliarPaciente //Estructura auxiliar que utilizaremos para informar a la interfaz de los pacientes para listar.
     {
         private string iNombre;
         private int iNumeroDeUrgencia;

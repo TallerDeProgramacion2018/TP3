@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace EJ03
 {
-    abstract class Lista: List<Paciente>
+    abstract class Lista
     {
+        protected List<Paciente> iListaPacientes = new List<Paciente>();
+
+        public List<Paciente> ListaPacientes
+        {
+            get {return this.iListaPacientes; }
+            set {this.iListaPacientes= value; }
+        }
+
         public abstract void AgregarPaciente(Paciente pPaciente);
 
         public abstract void QuitarPaciente();
