@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EJ04
 {
-    class EncriptadorCesar : Encriptador
+    public class EncriptadorCesar : Encriptador
     {
-        private string iAbc = "abcdefghijklmñnopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890_-+,#$%&/()=¿?¡!|,.;:{}[]";
+        private string iAbc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_-+,#$%&/()=¿?¡!|,.;:{}[]";
         private int iDesplazamiento;
 
         public EncriptadorCesar(string pNombre, int pDesplazamiento) : base(pNombre)
@@ -18,13 +18,10 @@ namespace EJ04
 
         public int ObtenerPosicionABC(char pCaracter)
         {
-            int pos = 0;
-            for (int i = 0; i < iAbc.Length; i++)
+            for (int pos = 0; pos < iAbc.Length; pos++)
             {
-                if (iAbc[i] == pCaracter)
+                if (iAbc[pos] == pCaracter)
                     return pos;
-                else
-                    pos += 1;
             }
             return -1;
         }
@@ -33,7 +30,7 @@ namespace EJ04
         public override string Encriptar(string pCadena)
         {
             String cifrado = "";
-            if (iDesplazamiento > 0 && iDesplazamiento < iAbc.Length)
+            if (iDesplazamiento != 0 && iDesplazamiento < iAbc.Length)
             {
                 //recorre caracter a caracter el mensaje a cifrar
                 for (int i = 0; i < pCadena.Length; i++)
@@ -60,7 +57,10 @@ namespace EJ04
 
         public override string Desencriptar(string pCadena)
         {
-            return pCadena;
+            iDesplazamiento *= -1;
+            string result = Encriptar(pCadena);
+            iDesplazamiento *= -1;
+            return result;
         }
     }
 }

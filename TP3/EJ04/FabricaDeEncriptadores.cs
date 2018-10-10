@@ -19,7 +19,7 @@ namespace EJ04
             iEncriptadores.Add("Null", new EncriptadorNull("Null"));
         }
 
-        public static FabricaDeEncriptadores Instance
+        public static FabricaDeEncriptadores Instance       // El método que devuelve el objeto si existe, y si no, lo crea.
         {
             get
             {
