@@ -17,6 +17,9 @@ namespace EJ03
             else
                 return "Triaje";
         }
+
+        // Este método crea y devuelve información de los pacientes en una estructura
+        // auxiliar para que puedan ser informados a la interfaz.
         public AuxiliarPaciente[] ArregloPacientes()
         {
             AuxiliarPaciente[] arreglo = new AuxiliarPaciente[hospital.Pacientes.ListaPacientes.Count];
@@ -32,6 +35,8 @@ namespace EJ03
             return arreglo;
         }
 
+
+        // Devuelve el resultado de atender un paciente, y su nombre si fue exitosa.
         public ResultadoAtencion AtenderPaciente()
         {
             if (hospital.Pacientes.ListaPacientes.Count != 0)

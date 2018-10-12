@@ -8,7 +8,7 @@ namespace EJ03
 {
     class Hospital
     {
-        private Lista iLista = new ListaFIFO();
+        protected Lista iLista = new ListaFIFO();
 
         public Lista Pacientes
         {
@@ -28,31 +28,35 @@ namespace EJ03
         public void CambiarATriaje()
         {
             Lista nuevaLista = new ListaTriaje();
-
-            for (int i = 0; i <= Pacientes.ListaPacientes.Count; i++)
+            int cant = Pacientes.ListaPacientes.Count;
+            if (cant > 0)
             {
-                Paciente aux = Pacientes.ListaPacientes.First();
-                Pacientes.ListaPacientes.Remove(aux);
-                nuevaLista.ListaPacientes.Add(aux);
+                for (int i = 0; i < cant; i++)
+                {
+                    Paciente aux = Pacientes.ListaPacientes.First();
+                    Pacientes.ListaPacientes.Remove(aux);
+                    nuevaLista.ListaPacientes.Add(aux);
+                }
+                nuevaLista.OrdenarLista();
             }
-
-            nuevaLista.OrdenarLista();
-            Pacientes.ListaPacientes = nuevaLista.ListaPacientes;
+            Pacientes = nuevaLista;
         }
 
         public void CambiarAFIFO()
         {
             Lista nuevaLista = new ListaFIFO();
-
-            for (int i = 0; i <= Pacientes.ListaPacientes.Count; i++)
+            int cant = Pacientes.ListaPacientes.Count;
+            if (cant > 0)
             {
-                Paciente aux = Pacientes.ListaPacientes.First();
-                Pacientes.ListaPacientes.Remove(aux);
-                nuevaLista.ListaPacientes.Add(aux);
+                for (int i = 0; i < cant; i++)
+                {
+                    Paciente aux = Pacientes.ListaPacientes.First();
+                    Pacientes.ListaPacientes.Remove(aux);
+                    nuevaLista.ListaPacientes.Add(aux);
+                }
+                nuevaLista.OrdenarLista();
             }
-
-            nuevaLista.OrdenarLista();
-            Pacientes.ListaPacientes = nuevaLista.ListaPacientes;
+            Pacientes = nuevaLista;
         }
 
         /*public void CambiarATriaje()

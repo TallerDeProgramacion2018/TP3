@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace TP3
 {
-    public abstract class Animal
+    public abstract class Animal  // Clase general animal, de la cual los animales especificos heredan.
     {
-       
-        public void Saltar()
+        // Los métodos saltar y correr se implementan en esta clase ya
+        // que todos los animales lo implementan de la misma manera.
+
+        public void Saltar()                
         {
             Console.WriteLine("Saltando");
         }
@@ -19,7 +21,7 @@ namespace TP3
             Console.WriteLine("Corriendo");
         }
 
-        public abstract void HacerRuido();
+        public abstract void HacerRuido();   // Método que implementará cada animal específico.
 
     }
 }

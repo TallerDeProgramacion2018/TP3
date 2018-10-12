@@ -9,6 +9,8 @@ namespace Test1
     {
         [TestMethod]
         public void TestEncriptarAES()
+            // El método encripta la cadena y luego la desencripta, corroborando
+            // que el resultado de la encriptación es correcto.
         {
             EncriptadorAES encriptador = new EncriptadorAES("AES");
             string cadena = "hola";

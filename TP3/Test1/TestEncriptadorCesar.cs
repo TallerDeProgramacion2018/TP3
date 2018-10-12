@@ -9,9 +9,10 @@ namespace TestEncriptador
     {
         [TestMethod]
         public void TestEncriptarCesar()
+            // Método de la prueba unitaria para probar el funcionamiento del encriptador.
         {
-            string palabra = "hola tu";
-            string palabraesperada = "jqnc vw";
+            string palabra = "hola";
+            string palabraesperada = "jqnc";
             int desplazamiento = 2;
 
             EncriptadorCesar cesar = new EncriptadorCesar("Cesar", desplazamiento);
@@ -23,9 +24,9 @@ namespace TestEncriptador
         [TestMethod]
         public void TestDesencriptarCesar()
         {
-            string palabra = "lspe";
+            string palabra = "jqnc";
             string palabraesperada = "hola";
-            int desplazamiento = 4;
+            int desplazamiento = 2;
 
             EncriptadorCesar cesar = new EncriptadorCesar("Cesar", desplazamiento);
             string resultado = cesar.Desencriptar(palabra);

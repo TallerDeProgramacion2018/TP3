@@ -14,7 +14,7 @@ namespace EJ03
         {
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine($"    Hospital                                         {Controlador.Orden()}");
+            Console.WriteLine($"    Hospital                                         Orden de atención: {Controlador.Orden()}");
             Console.WriteLine();
             Console.WriteLine("1- Atender Paciente");
             Console.WriteLine("2- Agregar Paciente");
@@ -62,12 +62,14 @@ namespace EJ03
                 case ConsoleKey.D3:
                     {
                         Console.Clear();
-                        Console.WriteLine("Nº Urgencia        Nombre");
+                        Console.WriteLine("Nº Urgencia         Nombre");
+                        Console.WriteLine("------------------------------------");
                         AuxiliarPaciente[] arreglo = Controlador.ArregloPacientes();
 
                         for (int i = 0; i < arreglo.Length; i++)
                         {
-                            Console.WriteLine($"{arreglo[i].Nombre}        {arreglo[i].NumeroDeUrgencia}");
+                            Console.WriteLine($"{arreglo[i].NumeroDeUrgencia:00}                  {arreglo[i].Nombre}");
+                            Console.WriteLine("------------------------------------");
                         }
                         Console.ReadKey();
                         VentanaPrincipal();
@@ -88,6 +90,7 @@ namespace EJ03
 
                             case ConsoleKey.D1:
                                 {
+                                    Console.Clear();
                                     Controlador.CambiarAFIFO();
                                     Console.WriteLine("El ordenamiento se cambió por orden de llegada.");
                                     Console.WriteLine();
@@ -98,6 +101,7 @@ namespace EJ03
 
                             case ConsoleKey.D2:
                                 {
+                                    Console.Clear();
                                     Controlador.CambiarATriaje();
                                     Console.WriteLine("El ordenamiento se cambió por orden Triaje.");
                                     Console.WriteLine();

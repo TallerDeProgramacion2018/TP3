@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EJ02
 {
+    // Clase abstracta de la cual circulo y triángulo implementan   
+    // los métodos CalcularArea y CalcularPerimetro.
+
     abstract class FiguraGeometrica
     {
         public abstract double CalcularArea();
