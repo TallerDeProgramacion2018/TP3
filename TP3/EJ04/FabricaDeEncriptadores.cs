@@ -9,11 +9,11 @@ namespace EJ04
     public class FabricaDeEncriptadores                                     //SINGLETON
     {
         private static FabricaDeEncriptadores instance = null;
-        private Dictionary<string, IEncriptador> iEncriptadores;
+        private Dictionary<string, IEncriptador> iEncriptadores = new Dictionary<string, IEncriptador>();
 
         protected FabricaDeEncriptadores()
         {
-            Dictionary<string, IEncriptador> iEncriptadores = new Dictionary<string, IEncriptador>();
+            //Dictionary<string, IEncriptador> iEncriptadores = new Dictionary<string, IEncriptador>();
             iEncriptadores.Add("Cesar", new EncriptadorCesar("Cesar", 8));
             iEncriptadores.Add("AES", new EncriptadorAES("AES"));
             iEncriptadores.Add("Null", new EncriptadorNull("Null"));
