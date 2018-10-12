@@ -8,7 +8,7 @@ namespace EJ03
 {
     abstract class Lista    // Clase general de la cual cada tipo de lista implementa sus metodos.
     {
-        protected List<Paciente> iListaPacientes = new List<Paciente>();
+        protected List<Paciente> iListaPacientes = new List<Paciente>(15);
 
         public List<Paciente> ListaPacientes
         {

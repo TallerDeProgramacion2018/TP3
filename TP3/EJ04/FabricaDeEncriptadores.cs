@@ -9,7 +9,7 @@ namespace EJ04
     public class FabricaDeEncriptadores                                     //SINGLETON
     {
         private static FabricaDeEncriptadores instance = null;
-        private Dictionary<string, IEncriptador> iEncriptadores;
+        private readonly Dictionary<string, IEncriptador> iEncriptadores;
 
         protected FabricaDeEncriptadores()
         {
