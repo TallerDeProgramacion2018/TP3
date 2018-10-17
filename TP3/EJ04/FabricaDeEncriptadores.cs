@@ -17,6 +17,7 @@ namespace EJ04
             iEncriptadores.Add("Cesar", new EncriptadorCesar("Cesar", 8));
             iEncriptadores.Add("AES", new EncriptadorAES("AES"));
             iEncriptadores.Add("Null", new EncriptadorNull("Null"));
+            iEncriptadores.Add("Reverso", new EncriptadoReverso("Reverso"));
         }
 
         public static FabricaDeEncriptadores Instance       // El método que devuelve el objeto si existe, y si no, lo crea.

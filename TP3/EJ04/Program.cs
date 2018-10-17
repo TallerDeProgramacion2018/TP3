@@ -44,6 +44,7 @@ namespace EJ04
             Console.WriteLine("1 - Encriptador Cesar");
             Console.WriteLine("2 - Encriptador AES");
             Console.WriteLine("3 - Encriptador Null");
+            Console.WriteLine("4 - Encriptador Reverso");
             Console.WriteLine();
             Console.WriteLine("0 - Volver a menu principal");
 
@@ -77,6 +78,15 @@ namespace EJ04
                         break;
                     }
 
+                case ConsoleKey.D4:
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"La palabra encriptada es: {Controlador.Encriptar(cadena, "Reverso")}");
+                        Console.ReadKey();
+                        VentanaPrincipal();
+                        break;
+                    }
+
                 case ConsoleKey.D0:
                     {
                         VentanaPrincipal();
@@ -95,6 +105,8 @@ namespace EJ04
             Console.WriteLine("1 - Encriptador Cesar");
             Console.WriteLine("2 - Eencriptador AES");
             Console.WriteLine("3 - Encriptador Null");
+            Console.WriteLine("4 - Encriptador Reverso");
+
             Console.WriteLine();
             Console.WriteLine("0 - Volve a ventana principal");
 
@@ -123,6 +135,15 @@ namespace EJ04
                     {
                         Console.Clear();
                         Console.WriteLine($"La palabra desencriptada es: {Controlador.Desencriptar(cadena, "Null")}");
+                        Console.ReadKey();
+                        VentanaPrincipal();
+                        break;
+                    }
+
+                case ConsoleKey.D4:
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"La palabra desencriptada es: {Controlador.Desencriptar(cadena, "Reverso")}");
                         Console.ReadKey();
                         VentanaPrincipal();
                         break;

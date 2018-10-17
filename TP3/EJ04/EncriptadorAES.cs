@@ -90,6 +90,10 @@ namespace EJ04
             return plaintext;
 
         }
+
+        // Este método crea un arreglo de bytes, que es el resultado de la encriptación
+        // del metodo AES, luego se crea un arreglo de strings, y a cada byte se le asigna
+        // un valor caracter de la tabla ASCII extendida.
         public override string Encriptar(string pCadena)
         {
             byte[] arregloBytes = EncryptStringToBytes_Aes(pCadena);
@@ -103,6 +107,9 @@ namespace EJ04
             return new string(arregloCaracteres);
         }
 
+        // Este método realiza lo contrario, primero definiendo un arreglo de bytes
+        // definido en base a la cadena de entrada, y luego se le desencripta mediante
+        // el método desencriptar de la clase AES del sistema.
         public override string Desencriptar(string pCadena)
         {
             byte[] arregloBytes = new byte[pCadena.Length];
