@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorFachada.cs" />
     <Compile Include="Encriptador.cs" />
     <Compile Include="EncriptadorAES.cs" />
     <Compile Include="EncriptadorCesar.cs" />
