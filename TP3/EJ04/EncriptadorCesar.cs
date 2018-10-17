@@ -8,6 +8,7 @@ namespace EJ04
 {
     public class EncriptadorCesar : Encriptador
     {
+        // Definimos una cadena con los caracteres que usaremos para desencriptar.
         private string iAbc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_-+,#$%&/()=¿?¡!|,.;:{}[]";
         private int iDesplazamiento;
 
@@ -16,6 +17,7 @@ namespace EJ04
             iDesplazamiento = pDesplazamiento;
         }
 
+        // Obtiene la posicion en la cadena iAbc de un caracter.
         public int ObtenerPosicionABC(char pCaracter)
         {
             for (int pos = 0; pos < iAbc.Length; pos++)
@@ -32,7 +34,7 @@ namespace EJ04
             String cifrado = "";
             if (iDesplazamiento != 0 && iDesplazamiento < iAbc.Length)
             {
-                //recorre caracter a caracter el mensaje a cifrar
+                // Recorre caracter a caracter el mensaje a cifrar
                 for (int i = 0; i < pCadena.Length; i++)
                 {
                     int posCaracter = ObtenerPosicionABC(pCadena[i]);
@@ -43,10 +45,10 @@ namespace EJ04
                         {
                             pos = pos - iAbc.Length;
                         }
-                        //concatena al mensaje cifrado
+                        // Concatena al mensaje cifrado
                         cifrado += iAbc[pos];
                     }
-                    else//si no existe el caracter no se cifra
+                    else // Si no existe el caracter no se cifra
                     {
                         cifrado += pCadena[i];
                     }
@@ -55,11 +57,21 @@ namespace EJ04
             return cifrado;
         }
 
+        // Este método desencripta utilizando el método 
+        // encriptar, pero invirtiendo el arreglo de caracteres.
         public override string Desencriptar(string pCadena)
         {
-            iDesplazamiento *= -1;
+            char[] abc = iAbc.ToCharArray();
+            Array.Reverse(abc);
+            string abc2 = new string(abc);
+            iAbc = abc2;
+
             string result = Encriptar(pCadena);
-            iDesplazamiento *= -1;
+
+            abc = iAbc.ToCharArray();
+            Array.Reverse(abc);
+            abc2 = new string(abc);
+            iAbc = abc2;
             return result;
         }
     }
