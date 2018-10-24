@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EJ04;
 
-namespace Test1
+namespace TestEncriptador
 {
     [TestClass]
     public class TestEncriptadorAES
